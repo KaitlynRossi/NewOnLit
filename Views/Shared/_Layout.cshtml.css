@@ -1,0 +1,45 @@
+﻿/* Please see documentation at https://learn.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+
+.navbar-light-green {
+  background-color: #9ab39a; 
+  box-shadow: 1px 1px 1px rgb(65, 65, 65);
+  position: fixed;
+  z-index: 1000;
+  width: 100%;
+}
+.nav-item{
+  font-family: 'Klee One';  
+  font-weight: bold;    
+  padding-left: 10px;      
+}
+.nav-item:hover{
+  text-decoration: underline;
+}
+
+.border-top {
+  border-top: 1px solid #e5e5e5;
+}
+.border-bottom {
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.box-shadow {
+  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+.footer {
+  width: 100%;
+  line-height: 50px;
+  text-decoration: none;
+  font-family: 'Klee One';
+  color: white;
+  font-size: 18px;
+  text-align: center;
+  height: 50px;
+  margin-top: auto; 
+}
+
+
+
+

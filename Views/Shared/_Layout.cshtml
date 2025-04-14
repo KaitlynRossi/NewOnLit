@@ -1,0 +1,105 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - ASPProject</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Klee+One&family=Rouge+Script&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/ASPProject.styles.css" asp-append-version="true" />
+    <link rel="icon" type="image/png" href="~/images/favicon.png" />
+    <style>
+        .navbar-brand {
+            font-family: 'Rouge Script', cursive;
+            font-size: 2rem;       
+            transform: scale(2.2);      
+            line-height: 1;              
+            padding-top: 0;
+            padding-bottom: 0;
+            margin-bottom: 0;
+            padding-left: 20px;
+            display: inline-block;
+            color: #fff;      
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3); 
+            }
+
+            .footerLinks, .footerCopyright{
+                color: white;
+                text-decoration: none;
+            }
+
+            .footerLinks:hover{
+                color: rgb(253, 255, 125);
+                text-decoration: underline;
+            }
+
+    </style>
+</head>
+<body>
+   <nav class="navbar navbar-expand-lg navbar-light navbar-light-green">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="@Url.Action("Index", "Home")">OnLit</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="@Url.Action("Index", "Community")">
+                                Community
+                            </a>
+                        </li>
+                         <li class="nav-item">
+                            <a class="nav-link" href="@Url.Action("MyView", "Home")">
+                                Shop Books
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="@Url.Action("Privacy", "Home")">
+                                Policies
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="@Url.Action("About", "Home")">
+                                About Us
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="@Url.Action("CreateAccount", "Customer")">
+                                <i class="bi bi-person"></i>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="@Url.Action("Index", "ShoppingCart")">
+                                <i class="bi bi-cart"></i> 
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    <div class="container">
+        <main role="main" class="">
+            @RenderBody()
+        </main>
+    </div> 
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            <a class="footerLinks" asp-area="" asp-controller="Home" asp-action="Community">Community</a>
+            <a class="footerLinks" asp-area="" asp-controller="Home" asp-action="MyView">Shop Books</a>
+            <a class="footerLinks" asp-area="" asp-controller="Home" asp-action="Community">About Us</a>
+            <a class="footerLinks" asp-area="" asp-controller="Home" asp-action="Community">Policies</a>
+            <br>
+            <p class="footerCopyright">&copy; 2025 - OnLit</p>
+        </div>
+    </footer>  
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script> 
+    @await RenderSectionAsync("Scripts", required: false) 
+</body> 
+</html>

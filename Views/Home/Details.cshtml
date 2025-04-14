@@ -1,0 +1,77 @@
+@model ASPProject.Models.Book
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@Model.Title</title>
+    <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.css" />
+    <link href="https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap" rel="stylesheet" />
+    <style>
+        html, body {
+        height: 100vh;
+        background: url('../images/BackgroundForest.jpg') no-repeat center center;
+        background-size: cover;
+        background-attachment: fixed;
+        overflow-x: hidden;
+    }
+    
+        h2 {
+            font-family: 'Klee One';
+            font-size: 40px;
+            color: black;
+        }
+
+        .fantasy-card {
+            font-family: 'Klee One';
+            background-color: #9ab39a;
+            border-radius: 12px;
+            box-shadow:
+            0 0 8px #f8e7c9,
+            0 0 16px #fceabb,
+            0 0 24px #f9d29d;
+            color: black;
+        }
+
+        p {
+            color: black;
+        }
+
+        .custom-mt {
+            margin-top: 6rem;
+            margin-bottom: 4rem;
+        }
+
+        .cartButton{
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .cartButton:hover{
+            transform: scale(1.03);
+            box-shadow: 0px 0px 5px #454d45;
+        }
+    </style>
+</head>
+<body class="bg-image" style="background-image: url('/images/BookBackground.jpg'); background-size: cover; background-position: center; background-attachment: fixed; min-height: 100vh;">
+
+    <div class="container d-flex justify-content-center align-items-center vh-100 custom-mt">
+        <div class="card fantasy-card text-center p-4" style="max-width: 500px;">
+            <div class="card-body">
+                <h2 class="card-title">@Model.Title</h2>
+                <img src="@Model.ImageUrl" alt="@Model.Title" class="img-fluid rounded mb-3" style="max-width: 200px;">
+                <p class="card-text"><strong>Author:</strong> @Model.Author</p>
+                <p class="card-text"><strong>Price:</strong> $@Model.Price</p>
+                <p class="card-text"><strong>Description:</strong> @Model.Description</p>
+
+
+                <form asp-controller="ShoppingCart" asp-action="AddToCart" method="post">
+                    <input type="hidden" name="bookId" value="@Model.Id" />
+                    <button type="submit" class="cartButton btn w-100 mt-2 text-black" style="background-color: #889e88;">Add to Cart</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

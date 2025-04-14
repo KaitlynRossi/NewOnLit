@@ -1,0 +1,322 @@
+﻿@model IEnumerable<ASPProject.Models.Book>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>OnLit Home</title>
+    <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css" />
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            background: url('../images/BackgroundForest.jpg') no-repeat center center;
+            background-size: cover;
+            background-attachment: fixed;
+            overflow-x: hidden;
+            box-sizing: border-box;
+        }
+
+
+        .mainSection {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: rgb(0, 0, 0); 
+        }
+
+        .mainSection h1 {
+            margin-bottom: 10px;
+        }
+
+        .mainSection h2 {
+            font-weight: normal;
+        }
+
+        .mainText{
+            width: 55%;
+            height: 25%;
+            border: black 0.1px solid;
+            box-shadow: 0 0 10px rgba(152, 128, 40, 0.8), 0 0 20px rgba(255, 255, 255, 0.6), 0 0 30px rgb(255, 215, 0);
+            background-color: #9ab39a;
+        }
+        .communityInfo{
+            box-shadow: 
+                0 0 10px rgba(152, 128, 40, 0.8), 
+                0 0 20px rgba(255, 255, 255, 0.6), 
+                0 0 30px rgb(255, 215, 0);
+            display: flex;
+            margin-top: 1.5%;
+            width: 100%; 
+            height: 63vh;
+            background-image: url('../images/BackgroundForest.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .textBubble {
+            width: 350px;
+            height: 160px; 
+            background: linear-gradient(135deg, #fffbf4, #fff7ee);
+            font-family: 'Klee One';
+            border-radius: 30px;
+            padding: 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            margin: 20px auto; 
+            margin: 25px 0 20px 20px;
+            transform: rotate(-2.5deg); 
+            transform-origin: top left;
+        }
+
+        .textBubble-right {
+            margin-left: -90px;  
+            margin-top: 150px;   
+            transform: none
+        }
+
+        .textBubble-bottom {
+            margin-left: -600px;  
+            margin-top: 270px;   
+            transform: rotate(5.5deg);  
+            transform-origin: bottom left;
+        }
+
+        .bookTitle {
+            font-size: 18px;
+            margin-bottom: 15px;
+            text-align: center;
+            color: #444;
+            text-shadow: 1px 1px 2px rgba(255, 215, 0, 0.6);
+        }
+
+        .bookReview {
+            font-size: 14px;
+            margin-top: 10px;
+            color: #333;
+            text-align: center;
+        }
+
+        .bi-star-fill {
+            color: gold;
+            -webkit-text-stroke-width: 1px;
+            -webkit-text-stroke-color: black;
+            font-size: 1.2rem;
+            margin: 0 1px;
+            display: inline-block;
+        }
+
+        .right-content {
+            text-align: center;
+            max-width: 400px;
+            height: 210px;
+            font-family: 'Klee One';
+            margin-top: 115px;
+            background: linear-gradient(135deg, #9ab39a, #9ab39a);
+            padding: 30px;
+            border-radius: 15px; 
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15); 
+            color: black; 
+            position: relative;
+            margin-left: 400px;
+            z-index: 2;
+        }
+
+        .custom-btn {
+            margin-left: -4.5%;
+            background-color:#889e88; 
+            padding: 10px 15px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-family: 'Klee One';
+            color: black;
+            transition: all 0.3s ease;
+            display: inline-block; 
+            white-space: nowrap;
+        }
+
+        .custom-btn:hover {
+            background-color:#7a8f7a;
+            color: black;
+            transform: scale(1.05); 
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .aboutInfo{
+            width: 100%;
+            height: 500px;
+            box-shadow: 
+                0 0 10px rgba(152, 128, 40, 0.8), 
+                0 0 20px rgba(255, 255, 255, 0.6), 
+                0 0 30px rgb(255, 215, 0);
+            display: flex;
+            background-image: url('../images/BackgroundForest.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            margin-top: 5%;
+        }
+
+        .aboutSectionInfo{
+            width: 500px;
+            height: 270px;
+            background-color:#9ab39a;
+            border-radius: 20px;
+            margin-left: 5%;
+            margin-top: 10%;
+            font-family: 'Klee One';
+        }
+
+        .aboutTitle{
+            margin-left: 30%;
+            margin-top: 2%;
+        }
+
+        .aboutText{
+            margin-top: 2%;
+            margin-left: 2%;
+            margin-right: 2%;
+        }
+
+        .onlitLogo{
+            width: 500px;
+            height: 500px;
+            margin-left: 650px;
+            margin-top: -400px;
+        }
+
+        .footerPositioning{
+            height: 50px;
+            width: 100%;
+        }
+
+    @@media (max-width: 768px) {
+
+    .mainText {
+        width: 90%;
+        height: auto;
+        padding: 20px;
+    }
+
+    .communityInfo {
+        flex-direction: column;
+        align-items: center;
+        height: auto;
+        padding-bottom: 20px;
+    }
+
+    .textBubble, .textBubble-right, .textBubble-bottom {
+        margin: 15px auto;
+        transform: none !important;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .right-content {
+        margin: 20px auto;
+        width: 90%;
+        height: auto;
+    }
+
+    .aboutInfo {
+        flex-direction: column;
+        align-items: center;
+        height: auto;
+    }
+
+    .aboutSectionInfo {
+        margin: 20px auto;
+        width: 90%;
+        height: auto;
+    }
+
+    .onlitLogo {
+        width: 250px;
+        height: 250px;
+        margin: 20px auto;
+        display: block;
+    }
+
+    .custom-btn {
+        margin-left: 0 !important;
+        margin-top: 10px;
+        display: inline-block;
+    }
+
+    .aboutTitle {
+        margin-left: 0;
+        text-align: center;
+    }
+
+    .aboutText {
+        text-align: center;
+    }
+}
+
+
+    </style>
+</head>
+<body>
+    <section class="mainSection">
+        <div class="mainText">
+            <h1 style="font-family: 'Klee One';">Welcome to OnLit</h1>
+            <h2 style="font-family: 'Klee One';">A community for readers to buy books and chat with each other!</h2>
+            <a asp-controller="Home" asp-action="MyView" class="custom-btn">
+                Shop Books
+            </a>
+        </div>
+    </section>
+    <section class="communityInfo">
+        <div class="textBubble">
+            <h3 class="bookTitle">Zodiac Achademy: The Awakening</h3>
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-fill"></i>
+            <p class="bookReview">One of the best books I've ever read, the world building and character development was incredible</p>
+        </div>
+        <div class="textBubble textBubble-right">
+            <h3 class="bookTitle">lazulifantasy</h3>
+            <p class="bookReview">Does anyone have any fantasy book recomendations similar to Zodiac Achademy? I loved the world and magic and want something like that.</p>
+        </div>
+         <div class="textBubble textBubble-bottom">
+            <h3 class="bookTitle">Every Last Word</h3>
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-fill"></i>
+            <p class="bookReview">An incredible heartfelt book with an amazing twist</p>
+        </div>
+        <div class="right-content">
+            <h2>Chat with users on the community page or post book reviews.</h2>
+            <a asp-controller="Home" asp-action="Community" class="custom-btn" style="margin-left: 1%">
+                Check Out the Community
+            </a>
+        </div>
+    </section>
+    <section class="aboutInfo">
+        <div class="aboutSectionInfo">
+            <h2 class="aboutTitle">About OnLit</h2>
+            <p class="aboutText">
+                OnLit began and was founded on a shared interest in books. 
+                Being avid readers our team wanted to include more personalization features, accessibility features, 
+                and communicative features, to allow individuals who use the service as much control over an electronic 
+                book as they would have over a physical copy.
+            </p>
+            <a asp-controller="Home" asp-action="Community" class="custom-btn" style="margin-left: 35%;">
+                Learn More
+            </a>
+            <img class="onlitLogo" src="~/images/favicon.png"/>
+        </div>
+    </section>
+    <section class="footerPositioning">
+    </section>
+</body>
+</html>

@@ -1,0 +1,93 @@
+@model ASPProject.Models.Customer
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>CreateAccount</title>
+    <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.css" />
+    <link href="https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap" rel="stylesheet" />
+    <style>
+        /* Input styling */
+        input.form-control {
+            background-color: rgba(255, 255, 255, 0.15);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        input.form-control::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        input.form-control:focus {
+            background-color: rgba(255, 255, 255, 0.25);
+            box-shadow: none;
+            color: white;
+        }
+
+        /* Optional: white labels for better contrast */
+        label {
+            color: white;
+        }
+    </style>
+</head>
+<body class="bg-image" style="background-image: url('/images/FantasyBackground.jpg'); background-size: cover; background-position: center; background-attachment: fixed;">
+
+    <!-- Heading -->
+    <div class="text-center pt-5">
+        <h1 style="font-family: 'MedievalSharp', cursive; color: white; font-size: 3rem;">
+            Create An Account
+        </h1>
+    </div>
+
+    <!-- Centered Card -->
+    <div class="d-flex justify-content-center align-items-center" style="min-height: 80vh;">
+        <div class="card bg-transparent border-0 text-white shadow" style="
+            width: 100%;
+            max-width: 500px;
+            backdrop-filter: blur(4px);
+            background-color: rgba(0, 0, 0, 0.25);
+            border-radius: 12px;
+        ">
+            <div class="card-body">
+                <form asp-action="CreateAccount" method="post">
+                    <div asp-validation-summary="All" class="text-danger"></div>
+
+                    <div class="form-group mb-3">
+                        <label asp-for="firstName">First Name:</label>
+                        <input class="form-control" asp-for="firstName" required />
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label asp-for="lastName">Last Name:</label>
+                        <input class="form-control" asp-for="lastName" required />
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label asp-for="UserName">UserName:</label>
+                        <input class="form-control" asp-for="UserName" required />
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label asp-for="Email">Email:</label>
+                        <input class="form-control" asp-for="Email" />
+                    </div>
+
+                    <div class="form-group mb-4">
+                        <label asp-for="confirmEmail">Confirm Email:</label>
+                        <input class="form-control" asp-for="confirmEmail" />
+                    </div>
+
+                    <div class="text-center">
+                        <button class="btn btn-primary" type="submit" style="background-color: #9ab39a;">Create Account</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

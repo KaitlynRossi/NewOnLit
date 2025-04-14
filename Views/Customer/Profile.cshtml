@@ -1,0 +1,49 @@
+@model ASPProject.Models.Customer
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Welcome</title>
+    <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.css" />
+    <link href="https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap" rel="stylesheet" />
+    <style>
+        /* Optional: Add fantasy font globally if desired */
+        h4 {
+            font-family: 'MedievalSharp', cursive;
+        }
+
+        /* Card frosted glass effect */
+        .frosted-card {
+            backdrop-filter: blur(4px);
+            background-color: rgba(0, 0, 0, 0.25);
+            border-radius: 12px;
+            color: white;
+            border: none;
+        }
+
+        label, p {
+            color: white;
+        }
+    </style>
+</head>
+<body class="bg-image" style="background-image: url('/images/FantasyBackground.jpg'); background-size: cover; background-position: center; background-attachment: fixed; min-height: 100vh;">
+
+    <div class="container d-flex justify-content-center align-items-center" style="min-height: 100vh;">
+        <div class="card frosted-card p-4" style="width: 100%; max-width: 500px;">
+            <div class="card-header text-center bg-transparent border-0">
+                <h4>Welcome, @Model.firstName @Model.lastName!</h4>
+            </div>
+            <div class="card-body">
+                <p><strong>UserName:</strong> @Model.UserName</p>
+                <p><strong>Email:</strong> @Model.Email</p>
+                <!-- Button to go to the bookstore -->
+                <a class="btn mt-3 text-white" style="background-color: #9ab39a;" asp-controller="Home" asp-action="MyView">Go to Bookstore</a>
+
+            </div>
+        </div>
+    </div>
+
+    <script src="/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
