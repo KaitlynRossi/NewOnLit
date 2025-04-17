@@ -14,6 +14,10 @@ public class HomeController : Controller
     {
         return View(); 
     }
+    public IActionResult FAQ()
+    {
+        return View(); 
+    }
 
   public async Task<IActionResult> MyView(string search)
     {

@@ -1,0 +1,69 @@
+@{
+    ViewData["Title"] = "FAQ";
+}
+
+<h1 class="text-center" style="font-family: 'Klee One'; color:white; margin-top: 2rem;">Frequently Asked Questions</h1>
+<div class="container mt-5">
+    <div class="faq-section">
+        <div class="faq-item mb-4">
+            <h3 class="faq-question" style="font-family: 'Klee One'; color: #444;">What is OnLit?</h3>
+            <p class="faq-answer" style="font-family: 'Klee One'; color: black;">
+                OnLit is a community for readers to buy books, share reviews, and connect with other book lovers.
+            </p>
+        </div>
+        <div class="faq-item mb-4">
+            <h3 class="faq-question" style="font-family: 'Klee One'; color: #444;">How can I join the community?</h3>
+            <p class="faq-answer" style="font-family: 'Klee One'; color: black;">
+                You can join the community by creating an account. Click the profile icon in the navigation bar to get started.
+            </p>
+        </div>
+        <div class="faq-item mb-4">
+            <h3 class="faq-question" style="font-family: 'Klee One'; color: #444;">How do I purchase books?</h3>
+            <p class="faq-answer" style="font-family: 'Klee One'; color: black;">
+                Visit the "Shop Books" section from the navigation bar to browse and purchase books.
+            </p>
+        </div>
+        <div class="faq-item mb-4">
+            <h3 class="faq-question" style="font-family: 'Klee One'; color: #444;">Can I recommend books to others?</h3>
+            <p class="faq-answer" style="font-family: 'Klee One'; color: black;">
+                Yes! You can recommend books by participating in the community discussions or leaving reviews on book pages.
+            </p>
+        </div>
+    </div>
+</div>
+
+<style>
+    body {
+        background-image: url('/images/BookBackground.jpg'); 
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        min-height: 100vh;
+    }
+
+    .faq-section {
+        background: linear-gradient(135deg, #fffbf4, #fff7ee);
+        padding: 20px;
+        border-radius: 15px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .faq-item {
+        border-bottom: 1px solid #ccc;
+        padding-bottom: 10px;
+    }
+
+    .faq-item:last-child {
+        border-bottom: none;
+    }
+
+    .faq-question {
+        font-size: 1.5rem;
+        margin-bottom: 10px;
+    }
+
+    .faq-answer {
+        font-size: 1rem;
+        line-height: 1.5;
+    }
+</style>
