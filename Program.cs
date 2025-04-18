@@ -26,6 +26,9 @@ builder.Services.AddSession(options =>
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlite("Data Source=books.db"));
 
+builder.Services.AddDbContext<UsersDbContext>(opt =>
+    opt.UseSqlite("Data Source=Users.db"));
+
 // Add any other services you need
 builder.Services.AddScoped<BookRepository>();
 

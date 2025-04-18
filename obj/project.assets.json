@@ -3261,19 +3261,19 @@
     ]
   },
   "packageFolders": {
-    "/Users/kaitirossi/.nuget/packages/": {}
+    "/home/ahadu/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/kaitirossi/Documents/COP3855/OnLit/ASPProject.csproj",
+      "projectUniqueName": "/home/ahadu/Projects/NewOnLit/ASPProject.csproj",
       "projectName": "ASPProject",
-      "projectPath": "/Users/kaitirossi/Documents/COP3855/OnLit/ASPProject.csproj",
-      "packagesPath": "/Users/kaitirossi/.nuget/packages/",
-      "outputPath": "/Users/kaitirossi/Documents/COP3855/OnLit/obj/",
+      "projectPath": "/home/ahadu/Projects/NewOnLit/ASPProject.csproj",
+      "packagesPath": "/home/ahadu/.nuget/packages/",
+      "outputPath": "/home/ahadu/Projects/NewOnLit/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/kaitirossi/.nuget/NuGet/NuGet.Config"
+        "/home/ahadu/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
@@ -3291,11 +3291,6 @@
         "warnAsError": [
           "NU1605"
         ]
-      },
-      "restoreAuditProperties": {
-        "enableAudit": "true",
-        "auditLevel": "low",
-        "auditMode": "direct"
       }
     },
     "frameworks": {
@@ -3336,7 +3331,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.405/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/lib/dotnet/sdk/8.0.115/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

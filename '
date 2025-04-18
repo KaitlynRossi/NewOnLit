@@ -1,0 +1,62 @@
+@{
+Layout = "_Layout";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us</title>
+  <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css" />
+  <style>
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      background: url('../images/BackgroundForest.jpg') no-repeat center center;
+      background-size: cover;
+      background-attachment: fixed;
+      overflow-x: hidden;
+      box-sizing: border-box;
+    }
+    .mainSection {
+      width: 100%;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: rgb(0, 0, 0);
+    }
+    .mainText {
+      width: 55%;
+      height: 25%;
+      border: black 0.1px solid;
+      box-shadow: 0 0 10px rgba(152, 128, 40, 0.8),
+        0 0 20px rgba(255, 255, 255, 0.6),
+        0 0 30px rgb(255, 215, 0);
+      background-color: #9ab39a;
+    }
+    h1,
+    h2 {
+      font-family: 'Klee One';
+    }
+  </style>
+</head>
+
+<body>
+  <section class="mainSection">
+    <div class="mainText">
+      <h1 style="font-family: 'Klee One';">Welcome to OnLit</h1>
+      <h2 style="font-family: 'Klee One';">A community for readers to buy books and chat with each other!</h2>
+    </div>
+  </section>
+</body>
+
+</html>

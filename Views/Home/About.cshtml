@@ -1,0 +1,107 @@
+@{
+Layout = "_Layout";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us</title>
+  <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css" />
+  <style>
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      background: url('../images/BackgroundForest.jpg') no-repeat center center;
+      background-size: cover;
+      background-attachment: fixed;
+      overflow-x: hidden;
+      box-sizing: border-box;
+    }
+
+    .mainSection {
+      width: 100%;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: rgb(0, 0, 0);
+    }
+
+    .mainText {
+      max-width: 60vw;
+      height: auto;
+      min-width: 432px;
+      max-height: 80vh;
+      padding: 10px;
+      border: black 0.1px solid;
+      border-radius: 20px;
+      box-shadow: 0 0 10px rgba(152, 128, 40, 0.8),
+        0 0 20px rgba(255, 255, 255, 0.6),
+        0 0 30px rgb(255, 215, 0);
+      background-color: #9ab39a;
+    }
+
+    .About-Us-h1 {
+      font-family: 'Klee One';
+      font-size: 4rem;
+      color: #333;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .About-Us-txt {
+      font-family: 'Klee One';
+      font-size: calc(1vw + 0.9vh);
+      line-height: 1;
+      color: black;
+      text-align: center;
+      padding: 20px;
+      background-color: transparent;
+      border-radius: 10px;
+      max-width: 100%;
+      margin: 20px auto;
+      overflow-wrap: break-word;
+      word-break: break-word;
+    }
+  </style>
+</head>
+
+<body>
+  <section class="mainSection">
+    <div class="mainText">
+      <h1 class="About-Us-h1">About Us</h1>
+
+      <div class="About-Us-txt">
+        <p>OnLit began and was founded on a shared interest in books. Our passion for reading brought together a team of
+          individuals who understood the value and impact of a well-told story.</p>
+
+        <p>Being avid readers ourselves, we recognized the limitations of many existing digital reading platforms. We
+          wanted to create an experience that felt as intimate and flexible as reading a physical book, while also
+          embracing the advantages of technology.</p>
+
+        <p>To achieve this, we prioritized personalization features that let users tailor their reading environment—from
+          font styles and sizes to background colors and reading modes. Our goal was to give readers the freedom to
+          customize their experience to fit their unique preferences.</p>
+
+        <p>We also placed a strong emphasis on accessibility, ensuring that OnLit could be used by people with a wide
+          range of needs. This includes support for screen readers, text-to-speech functionality, and other assistive
+          technologies that make reading more inclusive.</p>
+
+        <p>Finally, we integrated communicative features that bring a social element to reading. Whether it’s sharing
+          notes, discussing chapters, or joining book clubs, OnLit makes it easier to connect with others over the
+          stories you love.</p>
+      </div>
+    </div>
+  </section>
+</body>
+
+</html>
