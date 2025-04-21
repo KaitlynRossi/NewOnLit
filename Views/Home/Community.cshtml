@@ -8,19 +8,19 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Community</title>
+    <title>Community Hub</title>
     <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css" />
     <link href="https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap" rel="stylesheet" />
     <style>
-        html,
-        body {
+        html, body {
             margin: 0;
             padding: 0;
             height: 100vh;
             background: url('/images/BackgroundForest.jpg') no-repeat center center fixed;
             background-size: cover;
+            font-family: 'MedievalSharp', cursive;
         }
 
         .CommunityCard {
@@ -28,77 +28,115 @@
             background-color: rgba(0, 0, 0, 0.4);
             border-radius: 20px;
             color: white;
-            width: 100%;
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-            text-align: center;
+            width: 95%;
+            max-width: 1100px;
             padding: 2rem;
-            min-height: 300px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: flex-start;
-            overflow-y: auto;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.37);
+            margin: auto;
+            min-height: 900px;
         }
 
-        h2 {
-            font-family: 'MedievalSharp', cursive;
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
+        .controls {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-bottom: 2rem;
+            gap: 1rem;
+        }
+
+        .controls select,
+        .controls input {
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            border: none;
+            width: 200px;
         }
 
         .postBox {
-            backdrop-filter: blur(6px);
             background-color: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(6px);
             border-radius: 15px;
             color: white;
             padding: 1.5rem;
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-            width: 100%;
-            max-width: 600px;
-            margin-bottom: 1.5rem;
-            margin-top: 40px;
+            margin-bottom: 2rem;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.37);
         }
 
         .postTitle {
             font-size: 1.8rem;
             margin-bottom: 0.5rem;
-            font-family: 'MedievalSharp', cursive;
-        }
-
-        .postContent {
-            font-size: 1.2rem;
-            margin-bottom: 1.5rem;
         }
 
         .postRating {
             font-size: 1.1rem;
             color: #bbb;
-            margin-bottom: 1.5rem;
+        }
+
+        .postContent {
+            font-size: 1.2rem;
+            margin-top: 1rem;
         }
     </style>
 </head>
 
 <body>
-    <section style="padding-top:10%; ">
+    <section style="padding-top:5%;">
         <div class="CommunityCard">
-            <h2>Community Posts</h2>
+            <h2 class="text-center mb-4"><i class="bi bi-people-fill"></i> Community Hub</h2>
 
-            @foreach (var post in Model.OrderBy(p => p.PostID))
-            {
-                <div class="postBox">
-                    <h3 class="postTitle">@post.PostTitle</h3>
-                    <p class="postRating">Rating: @post.PostRating</p>
-                    <p class="postContent">@post.PostContent</p>
-                </div>
-            }
+            <div class="controls">
+                <input type="text" id="searchInput" placeholder="Search for a book..." />
+                <select id="sortSelect">
+                    <option value="good">Sort by Highest</option>
+                    <option value="bad">Sort by Lowest</option>
+                </select>
+            </div>
+
+            <div id="postsContainer">
+                @foreach (var post in Model)
+                {
+                    <div class="postBox"
+                         data-rating="@post.PostRating"
+                         data-title="@post.PostTitle.ToLower()">
+                        <h3 class="postTitle">@post.PostTitle</h3>
+                        <p class="postRating"><i class="bi bi-star-fill"></i> Rating: @post.PostRating</p>
+                        <p class="postContent">@post.PostContent</p>
+                    </div>
+                }
+            </div>
         </div>
     </section>
 
-    <script src="/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        const postsContainer = document.getElementById("postsContainer");
+        const sortSelect = document.getElementById("sortSelect");
+        const searchInput = document.getElementById("searchInput");
+
+        const getPosts = () => Array.from(postsContainer.children);
+
+        function sortPosts(order) {
+            const posts = getPosts();
+            posts.sort((a, b) => {
+                const ratingA = parseFloat(a.dataset.rating);
+                const ratingB = parseFloat(b.dataset.rating);
+                return order === "good" ? ratingB - ratingA : ratingA - ratingB;
+            });
+            posts.forEach(post => postsContainer.appendChild(post));
+        }
+
+        function filterPosts(query) {
+            const q = query.toLowerCase();
+            getPosts().forEach(post => {
+                const title = post.dataset.title;
+                post.style.display = title.includes(q) ? "block" : "none";
+            });
+        }
+
+        sortSelect.addEventListener("change", e => sortPosts(e.target.value));
+        searchInput.addEventListener("input", e => filterPosts(e.target.value));
+
+        sortPosts("good"); // default sort
+    </script>
 </body>
 
 </html>
