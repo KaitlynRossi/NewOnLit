@@ -1,0 +1,104 @@
+@model List<OnLit.Models.CommunityPost>
+@{
+    Layout = "_Layout";
+}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Community</title>
+    <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap" rel="stylesheet" />
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            background: url('/images/BackgroundForest.jpg') no-repeat center center fixed;
+            background-size: cover;
+        }
+
+        .CommunityCard {
+            backdrop-filter: blur(6px);
+            background-color: rgba(0, 0, 0, 0.4);
+            border-radius: 20px;
+            color: white;
+            width: 100%;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+            text-align: center;
+            padding: 2rem;
+            min-height: 300px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            overflow-y: auto;
+        }
+
+        h2 {
+            font-family: 'MedievalSharp', cursive;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .postBox {
+            backdrop-filter: blur(6px);
+            background-color: rgba(0, 0, 0, 0.5);
+            border-radius: 15px;
+            color: white;
+            padding: 1.5rem;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+            width: 100%;
+            max-width: 600px;
+            margin-bottom: 1.5rem;
+            margin-top: 40px;
+        }
+
+        .postTitle {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+            font-family: 'MedievalSharp', cursive;
+        }
+
+        .postContent {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .postRating {
+            font-size: 1.1rem;
+            color: #bbb;
+            margin-bottom: 1.5rem;
+        }
+    </style>
+</head>
+
+<body>
+    <section style="padding-top:10%; ">
+        <div class="CommunityCard">
+            <h2>Community Posts</h2>
+
+            @foreach (var post in Model.OrderBy(p => p.PostID))
+            {
+                <div class="postBox">
+                    <h3 class="postTitle">@post.PostTitle</h3>
+                    <p class="postRating">Rating: @post.PostRating</p>
+                    <p class="postContent">@post.PostContent</p>
+                </div>
+            }
+        </div>
+    </section>
+
+    <script src="/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

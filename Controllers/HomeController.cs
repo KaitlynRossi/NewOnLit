@@ -1,13 +1,17 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using OnLit.Data;
+using OnLit.Models;
 
 public class HomeController : Controller
 {
   private readonly ApplicationDbContext _context;
+  private readonly CommunityDbContext _communityContext;
 
-  public HomeController(ApplicationDbContext context)
+  public HomeController(ApplicationDbContext context, CommunityDbContext communityContext)
   {
     _context = context;
+    _communityContext = communityContext;
   }
 
   public IActionResult Index()
@@ -28,6 +32,13 @@ public class HomeController : Controller
     return View(await books.ToListAsync());
   }
 
+  public async Task<IActionResult> Community()
+  {
+    var posts = await _communityContext.CommunityPosts
+                    .OrderBy(p => p.PostID)
+                    .ToListAsync();
+    return View(posts);
+  }
 
   public async Task<IActionResult> Details(int id)
   {
@@ -40,6 +51,7 @@ public class HomeController : Controller
 
     return View(book);
   }
+
   public IActionResult About()
   {
     return View();
