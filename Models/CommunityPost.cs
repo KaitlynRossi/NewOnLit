@@ -8,6 +8,6 @@ namespace OnLit.Models
         public string PostTitle { get; set; } = string.Empty;
         public int PostRating { get; set; }
         public string PostContent { get; set; } = string.Empty;
-        public string userID { get; set; } = string.Empty;
+        public int userID { get; set; }
     }
 }

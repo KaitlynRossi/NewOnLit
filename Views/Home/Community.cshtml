@@ -1,4 +1,4 @@
-@model List<OnLit.Models.CommunityPost>
+@model List<OnLit.Models.CommunityPostViewModel>
 @{
     Layout = "_Layout";
 }
@@ -99,6 +99,7 @@
                          data-rating="@post.PostRating"
                          data-title="@post.PostTitle.ToLower()">
                         <h3 class="postTitle">@post.PostTitle</h3>
+                        <p class="postUser">By: @post.UserName</p>
                         <p class="postRating"><i class="bi bi-star-fill"></i> Rating: @post.PostRating</p>
                         <p class="postContent">@post.PostContent</p>
                     </div>
