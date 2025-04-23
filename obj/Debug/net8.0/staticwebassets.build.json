@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "0T6KYSAklxHzPzLZQKh4hRHeRRrbwNR5SNAv4TKyH2Y=",
+  "Hash": "LksoglUBP14qYZGhmUc6+iB6gyI41uo6WET8TIx7V3A=",
   "Source": "ASPProject",
   "BasePath": "_content/ASPProject",
   "Mode": "Default",
@@ -188,12 +188,12 @@
       "OriginalItemSpec": "wwwroot/images/FantasyBackground.jpg"
     },
     {
-      "Identity": "/Users/kaitirossi/Documents/COP3855/NewOnLit/wwwroot/images/Favicon.png",
+      "Identity": "/Users/kaitirossi/Documents/COP3855/NewOnLit/wwwroot/images/favicon.png",
       "SourceId": "ASPProject",
       "SourceType": "Discovered",
       "ContentRoot": "/Users/kaitirossi/Documents/COP3855/NewOnLit/wwwroot/",
       "BasePath": "_content/ASPProject",
-      "RelativePath": "images/Favicon.png",
+      "RelativePath": "images/favicon.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -204,7 +204,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/images/Favicon.png"
+      "OriginalItemSpec": "wwwroot/images/favicon.png"
     },
     {
       "Identity": "/Users/kaitirossi/Documents/COP3855/NewOnLit/wwwroot/images/OnLitLogo.png",

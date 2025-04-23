@@ -1,93 +1,100 @@
 @model ASPProject.Models.Customer
 @{
-    Layout = null;
+Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-    <meta name="viewport" content="width=device-width" />
-    <title>CreateAccount</title>
-    <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.css" />
-    <link href="https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap" rel="stylesheet" />
-    <style>
-        /* Input styling */
-        input.form-control {
-            background-color: rgba(255, 255, 255, 0.15);
-            color: white;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-        }
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Create Account</title>
+  <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap" rel="stylesheet" />
+  <style>
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      background: url('/images/BackgroundForest.jpg') no-repeat center center fixed;
+      background-size: cover;
+      font-family: 'MedievalSharp', cursive;
+    }
 
-        input.form-control::placeholder {
-            color: rgba(255, 255, 255, 0.7);
-        }
+    .formCard {
+      backdrop-filter: blur(6px);
+      background-color: rgba(0, 0, 0, 0.4);
+      border-radius: 20px;
+      color: white;
+      width: 95%;
+      max-width: 500px;
+      padding: 2rem;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.37);
+      margin: auto;
+    }
 
-        input.form-control:focus {
-            background-color: rgba(255, 255, 255, 0.25);
-            box-shadow: none;
-            color: white;
-        }
+    .form-control {
+      background-color: rgba(255, 255, 255, 0.2);
+      color: white;
+      border: none;
+      padding: 0.6rem 1rem;
+      border-radius: 10px;
+      margin-bottom: 1rem;
+    }
 
-        /* Optional: white labels for better contrast */
-        label {
-            color: white;
-        }
-    </style>
+    .form-control::placeholder {
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .form-control:focus {
+      background-color: rgba(255, 255, 255, 0.3);
+      box-shadow: none;
+      color: white;
+    }
+
+    .custom-btn {
+      background-color: #889e88;
+      border: none;
+      border-radius: 12px;
+      padding: 10px 20px;
+      color: black;
+      font-family: inherit;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .custom-btn:hover {
+      background-color: #9ab39a;
+    }
+  </style>
 </head>
-<body class="bg-image" style="background-image: url('/images/FantasyBackground.jpg'); background-size: cover; background-position: center; background-attachment: fixed;">
 
-    <!-- Heading -->
-    <div class="text-center pt-5">
-        <h1 style="font-family: 'MedievalSharp', cursive; color: white; font-size: 3rem;">
-            Create An Account
-        </h1>
-    </div>
+<body>
+  <section style="padding-top:10%;">
+    <div class="formCard" style="margin-bottom: 80px;">
+      <h2 class="text-center mb-4">Create An Account</h2>
+      <form asp-action="CreateAccount" method="post">
+        <div asp-validation-summary="All" class="text-danger"></div>
 
-    <!-- Centered Card -->
-    <div class="d-flex justify-content-center align-items-center" style="min-height: 80vh;">
-        <div class="card bg-transparent border-0 text-white shadow" style="
-            width: 100%;
-            max-width: 500px;
-            backdrop-filter: blur(4px);
-            background-color: rgba(0, 0, 0, 0.25);
-            border-radius: 12px;
-        ">
-            <div class="card-body">
-                <form asp-action="CreateAccount" method="post">
-                    <div asp-validation-summary="All" class="text-danger"></div>
+        <label asp-for="Email"></label>
+        <input asp-for="Email" class="form-control" required />
 
-                    <div class="form-group mb-3">
-                        <label asp-for="firstName">First Name:</label>
-                        <input class="form-control" asp-for="firstName" required />
-                    </div>
+        <label asp-for="UserName"></label>
+        <input asp-for="UserName" class="form-control" required />
 
-                    <div class="form-group mb-3">
-                        <label asp-for="lastName">Last Name:</label>
-                        <input class="form-control" asp-for="lastName" required />
-                    </div>
+        <label asp-for="Password"></label>
+        <input asp-for="Password" type="password" class="form-control" required />
 
-                    <div class="form-group mb-3">
-                        <label asp-for="UserName">UserName:</label>
-                        <input class="form-control" asp-for="UserName" required />
-                    </div>
-
-                    <div class="form-group mb-3">
-                        <label asp-for="Email">Email:</label>
-                        <input class="form-control" asp-for="Email" />
-                    </div>
-
-                    <div class="form-group mb-4">
-                        <label asp-for="confirmEmail">Confirm Email:</label>
-                        <input class="form-control" asp-for="confirmEmail" />
-                    </div>
-
-                    <div class="text-center">
-                        <button class="btn btn-primary" type="submit" style="background-color: #9ab39a;">Create Account</button>
-                    </div>
-                </form>
-            </div>
+        <div class="d-flex justify-content-between mt-4">
+          <button type="submit" class="custom-btn">Create Account</button>
+          <a class="custom-btn" href="@Url.Action(" Login", "Customer" )">Login</a>
         </div>
+      </form>
     </div>
-
-    <script src="/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  </section>
 </body>
+
 </html>

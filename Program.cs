@@ -1,6 +1,8 @@
 using ASPProject.Models;
 using Microsoft.AspNetCore.DataProtection;
 using Microsoft.EntityFrameworkCore;
+using OnLit.Data;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -25,6 +27,12 @@ builder.Services.AddSession(options =>
 // Set up SQLite DbContext (or change to your preferred database)
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlite("Data Source=books.db"));
+
+builder.Services.AddDbContext<UsersDbContext>(opt =>
+    opt.UseSqlite("Data Source=Users.db"));
+
+builder.Services.AddDbContext<CommunityDbContext>(opt =>
+    opt.UseSqlite("Data Source=Community.db"));
 
 // Add any other services you need
 builder.Services.AddScoped<BookRepository>();

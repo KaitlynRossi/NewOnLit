@@ -33,10 +33,6 @@
       "PackagePath": "staticwebassets/images/FantasyBackground.jpg"
     },
     {
-      "Id": "/Users/kaitirossi/Documents/COP3855/NewOnLit/wwwroot/images/Favicon.png",
-      "PackagePath": "staticwebassets/images/Favicon.png"
-    },
-    {
       "Id": "/Users/kaitirossi/Documents/COP3855/NewOnLit/wwwroot/images/OnLitLogo.png",
       "PackagePath": "staticwebassets/images/OnLitLogo.png"
     },
@@ -47,6 +43,10 @@
     {
       "Id": "/Users/kaitirossi/Documents/COP3855/NewOnLit/wwwroot/images/OpenBookBackground.webp",
       "PackagePath": "staticwebassets/images/OpenBookBackground.webp"
+    },
+    {
+      "Id": "/Users/kaitirossi/Documents/COP3855/NewOnLit/wwwroot/images/favicon.png",
+      "PackagePath": "staticwebassets/images/favicon.png"
     },
     {
       "Id": "/Users/kaitirossi/Documents/COP3855/NewOnLit/wwwroot/js/site.js",

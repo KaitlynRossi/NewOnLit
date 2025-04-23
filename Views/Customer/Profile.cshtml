@@ -1,49 +1,76 @@
 @model ASPProject.Models.Customer
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-    <meta name="viewport" content="width=device-width" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Welcome</title>
-    <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css" />
     <link href="https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap" rel="stylesheet" />
     <style>
-        /* Optional: Add fantasy font globally if desired */
-        h4 {
+        .WelcomeCard {
+            backdrop-filter: blur(6px);
+            background-color: rgba(0, 0, 0, 0.4);
+            border-radius: 20px;
+            color: white;
+            max-width: 600px;
+            width: 90%;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+            text-align: center;
+            margin: auto;
+            padding: 2rem;
+            min-height: 300px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+
+        h2 {
             font-family: 'MedievalSharp', cursive;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
         }
 
-        /* Card frosted glass effect */
-        .frosted-card {
-            backdrop-filter: blur(4px);
-            background-color: rgba(0, 0, 0, 0.25);
-            border-radius: 12px;
-            color: white;
+        p {
+            font-size: 1.2rem;
+            margin: 0.5rem 0;
+        }
+
+        .btn-custom {
+            background-color: #9ab39a;
             border: none;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            font-size: 1rem;
+            margin-top: 1.5rem;
+            border-radius: 8px;
+            transition: background-color 0.3s ease;
         }
 
-        label, p {
+        .btn-custom:hover {
             color: white;
+            background-color: #879a87;
         }
     </style>
 </head>
-<body class="bg-image" style="background-image: url('/images/FantasyBackground.jpg'); background-size: cover; background-position: center; background-attachment: fixed; min-height: 100vh;">
-
-    <div class="container d-flex justify-content-center align-items-center" style="min-height: 100vh;">
-        <div class="card frosted-card p-4" style="width: 100%; max-width: 500px;">
-            <div class="card-header text-center bg-transparent border-0">
-                <h4>Welcome, @Model.firstName @Model.lastName!</h4>
-            </div>
-            <div class="card-body">
-                <p><strong>UserName:</strong> @Model.UserName</p>
-                <p><strong>Email:</strong> @Model.Email</p>
-                <!-- Button to go to the bookstore -->
-                <a class="btn mt-3 text-white" style="background-color: #9ab39a;" asp-controller="Home" asp-action="MyView">Go to Bookstore</a>
-
-            </div>
-        </div>
+<section>
+<body style="background: url('/images/BackgroundForest.jpg') no-repeat center center fixed; background-size: cover;">
+    <div class="WelcomeCard">
+        <h2>Welcome to OnLit</h2>
+        <p><strong>Email:</strong> @Model.Email</p>
+        <p><strong>Username:</strong> @Model.UserName</p>
+        <a class="btn btn-custom" asp-controller="Home" asp-action="MyView">Go to Bookstore</a>
     </div>
-
     <script src="/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>

@@ -1,27 +1,26 @@
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ASPProject.Models
 {
+    [Table("Users")]
     public class Customer
     {
-        public int id { get; set; } = default!;
+        [Key]
+        [Column("UserID")]
+        public int UserID { get; set; }
 
-        [Required(ErrorMessage = "First name is required.")]
-        public string firstName { get; set; } = default!;
+        [Required, Column("email")]
+        [EmailAddress]
+        public string Email { get; set; } = string.Empty;
 
-        [Required(ErrorMessage = "Last name is required.")]
-        public string lastName { get; set; } = default!;
+        [Required, Column("UserName")]
+        public string UserName { get; set; } = string.Empty;
 
-        [Required(ErrorMessage = "UserName is required.")]
-        public string UserName { get; set; } = default!;
+        [Required, DataType(DataType.Password), Column("password")]
+        public string Password { get; set; } = string.Empty;
 
-        [Required(ErrorMessage = "Email is required.")]
-        [EmailAddress(ErrorMessage = "Invalid email format.")]
-        public string Email { get; set; } = default!;
-
-        [Required(ErrorMessage = "Please confirm your email.")]
-        [Compare("Email", ErrorMessage = "Emails do not match.")]
-        public string confirmEmail { get; set; } = default!;
-
+        [Column("memberRole")]
+        public int MemberRole { get; set; } = 0;
     }
 }

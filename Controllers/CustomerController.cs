@@ -5,33 +5,26 @@ namespace ASPProject.Controllers
 {
     public class CustomerController : Controller
     {
-        private static List<Customer> customers = new();
+        private readonly UsersDbContext _users;
+        public CustomerController(UsersDbContext users) => _users = users;
 
         [HttpGet]
-        public IActionResult CreateAccount()
-        {
-            return View();
-        }
+        public IActionResult CreateAccount() => View();
 
         [HttpPost]
         public IActionResult CreateAccount(Customer customer)
         {
-            if (ModelState.IsValid)
-            {
-                customers.Add(customer); // Simulate saving the customer
-                return RedirectToAction("Profile", new { id = customer.id });
-            }
-
-            return View(customer);
+            if (!ModelState.IsValid) return View(customer);
+            _users.Customers.Add(customer);
+            _users.SaveChanges();
+            return RedirectToAction("Profile", new { id = customer.UserID });
         }
+
 
         public IActionResult Profile(int id)
         {
-            var customer = customers.FirstOrDefault(c => c.id == id);
-            if (customer == null)
-            {
-                return NotFound();
-            }
+            var customer = _users.Customers.Find(id);
+            if (customer == null) return NotFound();
             return View(customer);
         }
     }
