@@ -5,8 +5,12 @@ namespace ASPProject.Controllers
 {
     public class CustomerController : Controller
     {
-        private readonly UsersDbContext _users;
-        public CustomerController(UsersDbContext users) => _users = users;
+        private readonly ApplicationDbContext _context;
+
+        public CustomerController(ApplicationDbContext context)
+        {
+            _context = context;
+        }
 
         [HttpGet]
         public IActionResult CreateAccount() => View();
@@ -15,15 +19,15 @@ namespace ASPProject.Controllers
         public IActionResult CreateAccount(Customer customer)
         {
             if (!ModelState.IsValid) return View(customer);
-            _users.Customers.Add(customer);
-            _users.SaveChanges();
+            _context.User.Add(customer);
+             _context.SaveChanges();
             return RedirectToAction("Profile", new { id = customer.UserID });
         }
 
 
         public IActionResult Profile(int id)
         {
-            var customer = _users.Customers.Find(id);
+            var customer = _context.User.Find(id);
             if (customer == null) return NotFound();
             return View(customer);
         }

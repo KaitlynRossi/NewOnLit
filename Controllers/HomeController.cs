@@ -1,23 +1,17 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using OnLit.Data;
 using OnLit.Models;
 
 
 public class HomeController : Controller
 {
   private readonly ApplicationDbContext _context;
-  private readonly CommunityDbContext _communityContext;
-  private readonly UsersDbContext _usersContext;
 
   public HomeController(
-      ApplicationDbContext context,
-      CommunityDbContext communityContext,
-      UsersDbContext usersContext)   // ← add this
+      ApplicationDbContext context
+      )   // ← add this
   {
     _context = context;
-    _communityContext = communityContext;
-    _usersContext = usersContext;
   }
 
   public IActionResult Index()
@@ -51,14 +45,15 @@ public class HomeController : Controller
 
   public async Task<IActionResult> Community()
 {
-    var posts = await _communityContext.CommunityPosts
-                    .OrderBy(p => p.PostID)
-                    .ToListAsync();
+    var posts = await _context.Community
+    .OrderBy(p => p.PostID)
+    .ToListAsync();
 
-    var ids   = posts.Select(p => p.userID).Distinct().ToList();
-    var users = await _usersContext.Customers
-                    .Where(u => ids.Contains(u.UserID))
-                    .ToListAsync();
+    var ids = posts.Select(p => p.userID).Distinct().ToList();
+
+    var users = await _context.User
+        .Where(u => ids.Contains(u.UserID))
+        .ToListAsync();
 
     var vm = posts.Select(p => new CommunityPostViewModel {
         PostID      = p.PostID,

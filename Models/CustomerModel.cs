@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ASPProject.Models
 {
-    [Table("Users")]
+    [Table("User")]
     public class Customer
     {
         [Key]
