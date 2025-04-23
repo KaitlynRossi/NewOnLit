@@ -75,7 +75,8 @@
         }
 
         .fantasy-card {
-        background: #1e2a38;
+         backdrop-filter: blur(6px);
+        background-color: rgba(0, 0, 0, 0.4);
         border: 1px solid #1a252f;
         color: #ecf0f1; 
         border-radius: 1rem;
@@ -142,11 +143,12 @@
                 <form action="@Url.Action("MyView", "Home")" method="get">
                     <button type="submit" class="btn" style="background-color: #889e88; margin-bottom: 10px;">Continue Shopping</button>
                 </form>
+                 <!-- Checkout Button -->
+                <form action="@Url.Action("Checkout", "ShoppingCart")" method="get">
+                    <button type="submit" class="btn" style="background-color: #889e88; margin-bottom: 10px;">Proceed to Checkout</button>
+                </form>
             </div>
-            <!-- Checkout Button -->
-            <form action="@Url.Action("Checkout", "ShoppingCart")" method="get">
-                <button type="submit" class="btn" style="background-color: #889e88; margin-bottom: 10px;">Proceed to Checkout</button>
-            </form>
+           
 
         </div>
     </body>

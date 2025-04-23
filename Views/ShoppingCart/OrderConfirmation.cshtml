@@ -1,11 +1,61 @@
-<h1>Order Confirmation</h1>
-<p>Thank you for your order! Your transaction has been completed.</p>
-<p>You will receive an email confirmation shortly.</p>
-<a href="@Url.Action("Index", "Home")" class="btn custom-button">Return to Home</a>
-<style>
-    .custom-button {
-        background-color: #889e88;
-        color: white;
-        border: none;
-    }
-</style>
+
+<html>
+    <head>
+         <title>Order Confirmation</title>
+        <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+        <style>
+            .custom-button {
+                background-color: #889e88;
+                color: white;
+                border: none;
+            }
+
+            html,
+            body {
+                margin: 0;
+                padding: 0;
+                height: 100vh;
+                background: url('../images/BackgroundForest.jpg') no-repeat center center fixed;
+                background-size: cover;
+                font-family: 'Klee One';
+            }
+
+            .formCard {
+                backdrop-filter: blur(6px);
+                background-color: rgba(0, 0, 0, 0.4);
+                border-radius: 20px;
+                color: white;
+                width: 95%;
+                max-width: 1000px;
+                padding: 2rem;
+                box-shadow: 0 8px 32px rgba(0, 0, 0, 0.37);
+                margin: auto;
+                margin-bottom: 5%;
+                margin-top: 5%;
+            }
+
+             .center{
+                display: flex;
+                justify-content: center;
+                width:100%;
+            }
+
+            .cust-container{
+                padding-top: 4rem;
+            }
+        </style>
+    </head>
+    <body>
+        <section class="cust-container">
+            <div class=formCard>
+                <h1>Order Confirmation</h1>
+                <p>Thank you for your order! Your transaction has been completed.</p>
+                <p>You will receive an email confirmation shortly.</p>
+                <div class="center">
+                    <a href="@Url.Action("Index", "Home")" class="btn custom-button">Return to Home</a>
+                </div>
+            </div>
+        </section>
+    </body>
+</html>
