@@ -1,69 +1,110 @@
 @{
+    Layout = "_Layout";
     ViewData["Title"] = "FAQ";
 }
+<html>
+    <head>
+        <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css" />  
+        <style> 
+            body {
+                background-image: url('/images/BackgroundForest.jpg'); 
+                background-size: cover;
+                background-position: center;
+                background-attachment: fixed;
+                min-height: 100vh;
+            }
 
-<h1 class="text-center" style="font-family: 'Klee One'; color:white; margin-top: 2rem;">Frequently Asked Questions</h1>
-<div class="container mt-5">
-    <div class="faq-section">
-        <div class="faq-item mb-4">
-            <h3 class="faq-question" style="font-family: 'Klee One'; color: #444;">What is OnLit?</h3>
-            <p class="faq-answer" style="font-family: 'Klee One'; color: black;">
-                OnLit is a community for readers to buy books, share reviews, and connect with other book lovers.
-            </p>
+            .fantasy-heading {
+                font-family: 'Rouge Script', cursive;
+                font-size: 3rem;
+                color: #1e2a38;
+                font-size: 60px;
+                text-shadow:
+                    0 0 8px #f8e7c9,
+                    0 0 16px #fceabb,
+                    0 0 24px #f9d29d;
+                border-radius: 1rem;
+                animation: glowPulse 3s ease-in-out infinite;
+                padding-top: 4rem;
+            }
+
+
+
+            @@keyframes sparkle {
+                0%   { transform: translateY(0) scale(1); opacity: 0.7; }
+                50%  { transform: translateY(-10px) scale(1.3); opacity: 1; }
+                100% { transform: translateY(0) scale(1); opacity: 0.7; }
+            }
+
+            .container{
+                margin-bottom: 3rem;
+            }
+
+            .faq-section {
+                background: rgba(0, 0, 0, 0.2); 
+                backdrop-filter: blur(10px); 
+                -webkit-backdrop-filter: blur(10px); 
+                border-radius: 15px;
+                padding: 30px;
+                box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+                border: 1px solid rgba(255, 255, 255, 0.4);
+            }
+
+            .faq-item {
+                border-bottom: 1px solid #ccc;
+                padding-bottom: 10px;
+            }
+
+            .faq-item:last-child {
+                border-bottom:  1px solid #ccc;
+            }
+
+            .faq-question {
+                font-size: 1.6rem;
+                font-weight: bold;
+                color: #ffffff;
+                text-shadow: 1px 1px 5px #f9d29d;
+            }
+
+            .faq-answer {
+                font-size: 1.05rem;
+                line-height: 1.6;
+                color: #ffffff;
+                text-shadow: 1px 1px 1px #f9d29d;
+            }
+        </style>
+    </head>
+    <body>
+        <h1 class="text-center fantasy-heading">Frequently Asked Questions</h1>
+        <div class="container mt-5">
+            <div class="faq-section">
+                <div class="faq-item mb-4">
+                    <h3 class="faq-question" style="font-family: 'Klee One'; ">What is OnLit?</h3>
+                    <p class="faq-answer" style="font-family: 'Klee One';">
+                        OnLit is a community for readers to buy books, share reviews, and connect with other book lovers.
+                    </p>
+                </div>
+                <div class="faq-item mb-4">
+                    <h3 class="faq-question" style="font-family: 'Klee One'; ">How can I join the community?</h3>
+                    <p class="faq-answer" style="font-family: 'Klee One'; ">
+                        You can join the community by creating an account. Click the profile icon in the navigation bar to get started.
+                    </p>
+                </div>
+                <div class="faq-item mb-4">
+                    <h3 class="faq-question" style="font-family: 'Klee One'; ">How do I purchase books?</h3>
+                    <p class="faq-answer" style="font-family: 'Klee One'; ">
+                        Visit the "Shop Books" section from the navigation bar to browse and purchase books.
+                    </p>
+                </div>
+                <div class="faq-item mb-4">
+                    <h3 class="faq-question" style="font-family: 'Klee One'; ">Can I recommend books to others?</h3>
+                    <p class="faq-answer" style="font-family: 'Klee One'; ">
+                        Yes! You can recommend books by participating in the community discussions or leaving reviews on book pages.
+                    </p>
+                </div>
+            </div>
         </div>
-        <div class="faq-item mb-4">
-            <h3 class="faq-question" style="font-family: 'Klee One'; color: #444;">How can I join the community?</h3>
-            <p class="faq-answer" style="font-family: 'Klee One'; color: black;">
-                You can join the community by creating an account. Click the profile icon in the navigation bar to get started.
-            </p>
-        </div>
-        <div class="faq-item mb-4">
-            <h3 class="faq-question" style="font-family: 'Klee One'; color: #444;">How do I purchase books?</h3>
-            <p class="faq-answer" style="font-family: 'Klee One'; color: black;">
-                Visit the "Shop Books" section from the navigation bar to browse and purchase books.
-            </p>
-        </div>
-        <div class="faq-item mb-4">
-            <h3 class="faq-question" style="font-family: 'Klee One'; color: #444;">Can I recommend books to others?</h3>
-            <p class="faq-answer" style="font-family: 'Klee One'; color: black;">
-                Yes! You can recommend books by participating in the community discussions or leaving reviews on book pages.
-            </p>
-        </div>
-    </div>
-</div>
+    </body>
+</html>
 
-<style>
-    body {
-        background-image: url('/images/BookBackground.jpg'); 
-        background-size: cover;
-        background-position: center;
-        background-attachment: fixed;
-        min-height: 100vh;
-    }
-
-    .faq-section {
-        background: linear-gradient(135deg, #fffbf4, #fff7ee);
-        padding: 20px;
-        border-radius: 15px;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    }
-
-    .faq-item {
-        border-bottom: 1px solid #ccc;
-        padding-bottom: 10px;
-    }
-
-    .faq-item:last-child {
-        border-bottom: none;
-    }
-
-    .faq-question {
-        font-size: 1.5rem;
-        margin-bottom: 10px;
-    }
-
-    .faq-answer {
-        font-size: 1rem;
-        line-height: 1.5;
-    }
-</style>
