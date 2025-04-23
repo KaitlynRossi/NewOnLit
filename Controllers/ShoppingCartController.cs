@@ -10,7 +10,7 @@ public class ShoppingCartController : Controller
 {
     private readonly ApplicationDbContext _context;
     private const string CartSessionKey = "ShoppingCart";
-
+    
     public ShoppingCartController(ApplicationDbContext context)
     {
         _context = context;
@@ -67,7 +67,64 @@ public class ShoppingCartController : Controller
 
         return RedirectToAction("Index");
     }
+    [HttpGet]
+    public IActionResult Checkout()
+    {
+        var cart = GetCartFromSession();
+        foreach (var item in cart)
+        {
+            if (item.Book == null)
+            {
+                item.Book = _context.Books.FirstOrDefault(b => b.Id == item.BookId);
+            }
+        }
+        // Calculate totals
+        var total = cart.Sum(item => item.Book.Price * item.Quantity);
+        var tax = total * 0.1m; // Example: 10% tax
+        var shipping = 5.99m; // Flat shipping rate
+        var grandTotal = total + tax + shipping;
 
+        // Create a view model to pass data to the view
+        var model = new CheckoutViewModel
+        {
+            CartItems = cart,
+            Total = total,
+            Tax = tax,
+            Shipping = shipping,
+            GrandTotal = grandTotal
+        };
+
+        return View(model);
+    }
+    public IActionResult OrderConfirmation()
+    {
+        var cart = GetCartFromSession();
+        if (cart != null && cart.Any())
+        {
+            foreach (var item in cart)
+            {
+                if (item.Book == null)
+                {
+                    item.Book = _context.Books.FirstOrDefault(b => b.Id == item.BookId);
+                }
+            }
+            // Calculate final amount
+            var total = cart.Sum(item => item.Book.Price * item.Quantity);
+            var transaction = new Transaction
+            {
+                userID = 1, //implement user tracking
+                bookID = cart.First().BookId, // For single book orders
+                qty = cart.Sum(item => item.Quantity),
+                saleAmount = total
+            };
+            // Save to database
+            _context.Transactions.Add(transaction);
+            _context.SaveChanges();
+            // Clear the cart
+            SaveCartToSession(new List<ShoppingCart>());
+        }
+        return View();
+    }
     private List<ShoppingCart> GetCartFromSession()
     {
         var cartJson = HttpContext.Session.GetString(CartSessionKey);
@@ -81,4 +138,5 @@ public class ShoppingCartController : Controller
         var cartJson = JsonConvert.SerializeObject(cart);
         HttpContext.Session.SetString(CartSessionKey, cartJson);
     }
+    
 }

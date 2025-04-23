@@ -1,0 +1,77 @@
+@model CheckoutViewModel
+
+<h1 class="text-center" style="font-family: 'Klee One'; margin-top: 2rem;">Checkout</h1>
+
+<div class="container mt-5">
+    <h3>Order Summary</h3>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Book</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.CartItems)
+            {
+                <tr>
+                    <td>@item.Book.Title</td>
+                    <td>@item.Book.Price.ToString("C")</td>
+                    <td>@item.Quantity</td>
+                    <td>$@(item.Book.Price * item.Quantity)</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <p><strong>Subtotal:</strong> @Model.Total.ToString("C")</p>
+    <p><strong>Tax:</strong> @Model.Tax.ToString("C")</p>
+    <p><strong>Shipping:</strong> @Model.Shipping.ToString("C")</p>
+    <p><strong>Grand Total:</strong> @Model.GrandTotal.ToString("C")</p>
+
+    <h3>Payment Information</h3>
+    <form asp-action="Checkout" method="post">
+        <div class="form-group mb-3">
+            <label for="FullName">Full Name</label>
+            <input type="text" id="FullName" name="FullName" class="form-control custom-input" required />
+        </div>
+        <div class="form-group mb-3">
+            <label for="Email">Email</label>
+            <input type="text" id="Email" name="Email" class="form-control custom-input" required />
+        </div>
+        <div class="form-group mb-3">
+            <label for="CreditCardNumber">Credit Card Number</label>
+            <input type="text" id="CreditCardNumber" name="CreditCardNumber" class="form-control custom-input" required />
+        </div>
+        <div class="form-group mb-3">
+            <label for="ExpirationDate">Expiration Date</label>
+            <input type="text" id="ExpirationDate" name="ExpirationDate" class="form-control custom-input" placeholder="MM/YY" required />
+        </div>
+        <div class="form-group mb-3">
+            <label for="CVV">CVV</label>
+            <input type="text" id="CVV" name="CVV" class="form-control custom-input" required />
+        </div>
+            <a href="@Url.Action("OrderConfirmation", "ShoppingCart")" class="btn custom-button">Confirm Order</a>
+    </form>
+</div>
+<style>
+    .custom-input {
+        border: 1px solid #ced4da;
+    }
+    .custom-button {
+        background-color: #889e88;
+        color: white;
+        border: none;
+    }
+    .custom-input:focus {
+        border-color: #889e88;
+        box-shadow: 0 0 0 0.2rem rgba(136, 158, 136, 0.25);
+        outline: 0;
+    }
+    
+    .btn:hover {
+        opacity: 0.9;
+    }
+</style>
