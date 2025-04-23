@@ -1,4 +1,3 @@
-// Models/CommunityPostViewModel.cs
 namespace OnLit.Models
 {
     public class CommunityPostViewModel

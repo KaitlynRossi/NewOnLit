@@ -2,7 +2,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using OnLit.Data;
 using OnLit.Models;
-using ASPProject.Models;           // for Customer / UsersDbContext
 
 
 public class HomeController : Controller
@@ -41,18 +40,15 @@ public class HomeController : Controller
 
   public async Task<IActionResult> Community()
 {
-    // 1. grab all posts
     var posts = await _communityContext.CommunityPosts
                     .OrderBy(p => p.PostID)
                     .ToListAsync();
 
-    // 2. grab only the users you actually need
     var ids   = posts.Select(p => p.userID).Distinct().ToList();
     var users = await _usersContext.Customers
                     .Where(u => ids.Contains(u.UserID))
                     .ToListAsync();
 
-    // 3. project into your VM, doing a simple in‑memory lookup
     var vm = posts.Select(p => new CommunityPostViewModel {
         PostID      = p.PostID,
         PostTitle   = p.PostTitle,
