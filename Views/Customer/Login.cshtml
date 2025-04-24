@@ -1,0 +1,97 @@
+@model ASPProject.Models.Customer
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Login</title>
+    <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap" rel="stylesheet" />
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            background: url('/images/BackgroundForest.jpg') no-repeat center center fixed;
+            background-size: cover;
+            font-family: 'MedievalSharp', cursive;
+        }
+
+        .formCard {
+            backdrop-filter: blur(6px);
+            background-color: rgba(0, 0, 0, 0.4);
+            border-radius: 20px;
+            color: white;
+            width: 95%;
+            max-width: 500px;
+            padding: 2rem;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.37);
+            margin: auto;
+        }
+
+        .form-control {
+            background-color: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: none;
+            padding: 0.6rem 1rem;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+        }
+
+        .form-control::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .form-control:focus {
+            background-color: rgba(255, 255, 255, 0.3);
+            box-shadow: none;
+            color: white;
+        }
+
+        .custom-btn {
+            background-color: #889e88;
+            border: none;
+            border-radius: 12px;
+            padding: 10px 20px;
+            color: black;
+            font-family: inherit;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .custom-btn:hover {
+            background-color: #9ab39a;
+        }
+    </style>
+</head>
+
+<body>
+    <section style="padding-top:10%;">
+        <div class="formCard" style="margin-bottom: 80px;">
+            <h2 class="text-center mb-4">Login</h2>
+            <form asp-action="CreateAccount" method="post">
+                <div asp-validation-summary="All" class="text-danger"></div>
+
+                <label asp-for="UserName"></label>
+                <input asp-for="UserName" class="form-control" required />
+
+                <label asp-for="Password"></label>
+                <input asp-for="Password" type="password" class="form-control" required />
+
+                <div class="d-flex justify-content-between mt-4">
+                    <a class="custom-btn" href="@Url.Action("CreateAccount", "Customer")">Create Account</a>
+                    <button type="submit" class="custom-btn">Login</button>
+                </div>
+            </form>
+        </div>
+    </section>
+</body>
+
+</html>

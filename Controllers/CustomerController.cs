@@ -20,7 +20,7 @@ namespace ASPProject.Controllers
         {
             if (!ModelState.IsValid) return View(customer);
             _context.User.Add(customer);
-             _context.SaveChanges();
+            _context.SaveChanges();
             return RedirectToAction("Profile", new { id = customer.UserID });
         }
 
@@ -31,5 +31,21 @@ namespace ASPProject.Controllers
             if (customer == null) return NotFound();
             return View(customer);
         }
+        [HttpGet]
+        public IActionResult Login() => View();
+
+        [HttpPost]
+        public IActionResult Login(string email, string password)
+        {
+            var customer = _context.User.FirstOrDefault(c => c.Email == email && c.Password == password);
+            if (customer == null)
+            {
+                ModelState.AddModelError(string.Empty, "Invalid login attempt.");
+                return View();
+            }
+
+            return RedirectToAction("Profile", new { id = customer.UserID });
+        }
+
     }
 }
