@@ -55,7 +55,7 @@ else
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
-app.UseSession(); // Must come before UseRouting
+app.UseSession(); 
 
 app.UseRouting();
 
