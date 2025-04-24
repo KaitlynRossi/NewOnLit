@@ -69,6 +69,18 @@ public class HomeController : Controller
     return View(vm);
 }
 
+ [HttpPost]
+  public async Task<IActionResult> CreateCommunityPost([FromBody] CommunityPost post)
+  {
+    if (ModelState.IsValid)
+    {
+      _context.Community.Add(post);
+      await _context.SaveChangesAsync();
+      return Json(new { success = true });
+    }
+    return Json(new { success = false });
+  }
+
   public async Task<IActionResult> Details(int id)
   {
     var book = await _context.Books.FirstOrDefaultAsync(b => b.Id == id);

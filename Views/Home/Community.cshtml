@@ -1,171 +1,259 @@
 @model List<OnLit.Models.CommunityPostViewModel>
 @{
-    Layout = "_Layout";
+  Layout = "_Layout";
 }
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Community Hub</title>
-    <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css" />
-    <link href="https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap" rel="stylesheet" />
-    <style>
-        html, body {
-            margin: 0;
-            padding: 0;
-            height: 100vh;
-            background: url('/images/BackgroundForest.jpg') no-repeat center center fixed;
-            background-size: cover;
-            font-family: 'MedievalSharp', cursive;
-        }
-        .CommunityCard {
-            backdrop-filter: blur(6px);
-            background-color: rgba(0, 0, 0, 0.4);
-            border-radius: 20px;
-            color: white;
-            width: 95%;
-            max-width: 1100px;
-            padding: 2rem;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.37);
-            margin: auto;
-            min-height: 900px;
-        }
-        .controls {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 2rem;
-            gap: 1rem;
-        }
-        .controls input,
-        .controls select,
-        .controls button {
-            background-color: rgba(255, 255, 255, 0.2);
-            color: white;
-            border: none;
-            padding: 0.6rem 1.2rem;
-            border-radius: 10px;
-            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
-            font-size: 1rem;
-            font-family: inherit;
-            cursor: pointer;
-        }
-        .controls input::placeholder {
-            color: rgba(255, 255, 255, 0.8);
-        }
-        .controls input:hover,
-        .controls select:hover,
-        .controls button:hover {
-            background-color: rgba(255, 255, 255, 0.3);
-        }
-        .postBox {
-            background-color: rgba(0, 0, 0, 0.5);
-            backdrop-filter: blur(6px);
-            border-radius: 15px;
-            color: white;
-            padding: 1.5rem;
-            margin-bottom: 2rem;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.37);
-        }
-        .postTitle {
-            font-size: 1.8rem;
-            margin-bottom: 0.5rem;
-        }
-        .postRating {
-            font-size: 1.1rem;
-            color: #bbb;
-        }
-        .postContent {
-            font-size: 1.2rem;
-            margin-top: 1rem;
-        }
-    </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Community Hub</title>
+  <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap" rel="stylesheet" />
+  <style>
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      background: url('/images/BackgroundForest.jpg') no-repeat center center fixed;
+      background-size: cover;
+      font-family: 'MedievalSharp', cursive;
+    }
+
+    .CommunityCard {
+      backdrop-filter: blur(6px);
+      background-color: rgba(0, 0, 0, 0.4);
+      border-radius: 20px;
+      color: white;
+      width: 95%;
+      max-width: 1100px;
+      padding: 2rem;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.37);
+      margin: auto;
+      min-height: 900px;
+    }
+
+    .controls {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 2rem;
+      gap: 1rem;
+    }
+
+    .controls input,
+    .controls select,
+    .controls button {
+      background-color: rgba(255, 255, 255, 0.2);
+      color: white;
+      border: none;
+      padding: 0.6rem 1.2rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+      font-size: 1rem;
+      font-family: inherit;
+      cursor: pointer;
+    }
+
+    .controls input::placeholder {
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    .controls input:hover,
+    .controls select:hover,
+    .controls button:hover {
+      background-color: rgba(255, 255, 255, 0.3);
+    }
+
+    .postBox {
+      background-color: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(6px);
+      border-radius: 15px;
+      color: white;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.37);
+    }
+
+    .postTitle {
+      font-size: 1.8rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .postRating {
+      font-size: 1.1rem;
+      color: #bbb;
+    }
+
+    .postContent {
+      font-size: 1.2rem;
+      margin-top: 1rem;
+    }
+  </style>
 </head>
+
 <body>
-    <section style="padding-top:8%;">
-        <div class="CommunityCard">
-            <h2 class="text-center mb-4"><i class="bi bi-people-fill"></i> Community Hub</h2>
-            <div class="controls">
-                <input type="text" id="searchInput" placeholder="Search for a book..." />
-                <div id="pagination" class="d-flex align-items-center" style="margin-right: 8%;">
-                    <button id="prevBtn"><i class="bi bi-chevron-left"></i></button>
-                    <span id="pageInfo" style="margin: 0 0.8rem;"></span>
-                    <button id="nextBtn"><i class="bi bi-chevron-right"></i></button>
-                </div>
-                <select id="sortSelect">
-                    <option value="good">Sort by Highest</option>
-                    <option value="bad">Sort by Lowest</option>
-                </select>
-            </div>
-            <div id="postsContainer">
-                @foreach (var post in Model)
-                {
-                    <div class="postBox"
-                         data-rating="@post.PostRating"
-                         data-title="@post.PostTitle.ToLower()">
-                        <h3 class="postTitle">@post.PostTitle</h3>
-                        <p class="postUser">By: @post.UserName</p>
-                        <p class="postRating"><i class="bi bi-star-fill"></i> Rating: @post.PostRating</p>
-                        <p class="postContent">@post.PostContent</p>
-                    </div>
-                }
-            </div>
+  <section style="padding-top:8%;">
+    <div class="CommunityCard">
+      <h2 class="text-center mb-4"><i class="bi bi-people-fill"></i> Community Hub</h2>
+      <div class="controls">
+        <input type="text" id="searchInput" placeholder="Search for a book..." />
+        <button id="newPostBtn"><i class="bi bi-plus-circle"></i> New Post</button>
+        <div id="pagination" class="d-flex align-items-center" style="margin-right: 8%;">
+          <button id="prevBtn"><i class="bi bi-chevron-left"></i></button>
+          <span id="pageInfo" style="margin: 0 0.8rem;"></span>
+          <button id="nextBtn"><i class="bi bi-chevron-right"></i></button>
         </div>
-    </section>
-    <script>
-        const postsContainer = document.getElementById("postsContainer");
-        const sortSelect = document.getElementById("sortSelect");
-        const searchInput = document.getElementById("searchInput");
-        const prevBtn = document.getElementById("prevBtn");
-        const nextBtn = document.getElementById("nextBtn");
-        const pageInfo = document.getElementById("pageInfo");
-        const posts = Array.from(postsContainer.children);
-        let currentPage = 1;
-        const pageSize = 5;
-        let currentSort = "good";
-        let currentQuery = "";
-        function renderPosts() {
-            let filtered = posts.filter(post =>
-                post.dataset.title.includes(currentQuery)
-            );
-            filtered.sort((a, b) => {
-                const A = parseFloat(a.dataset.rating);
-                const B = parseFloat(b.dataset.rating);
-                return currentSort === "good" ? B - A : A - B;
-            });
-            const totalPages = Math.max(1, Math.ceil(filtered.length / pageSize));
-            if (currentPage > totalPages) currentPage = totalPages;
-            if (currentPage < 1) currentPage = 1;
-            const start = (currentPage - 1) * pageSize;
-            const end = start + pageSize;
-            posts.forEach(p => p.style.display = "none");
-            filtered.slice(start, end).forEach(p => p.style.display = "block");
-            pageInfo.textContent = `Page ${currentPage} of ${totalPages}`;
-            prevBtn.disabled = currentPage === 1;
-            nextBtn.disabled = currentPage === totalPages;
+        <select id="sortSelect" style="margin-left: -80px;">
+          <option value="good">Sort by Highest</option>
+          <option value="bad">Sort by Lowest</option>
+        </select>
+      </div>
+      <div id="postsContainer">
+        @foreach (var post in Model)
+        {
+          <div class="postBox" data-rating="@post.PostRating" data-title="@post.PostTitle.ToLower()">
+            <h3 class="postTitle">@post.PostTitle</h3>
+            <p class="postUser">By: @post.UserName</p>
+            <p class="postRating"><i class="bi bi-star-fill"></i> Rating: @post.PostRating</p>
+            <p class="postContent">@post.PostContent</p>
+          </div>
         }
-        sortSelect.addEventListener("change", e => {
-            currentSort = e.target.value;
-            currentPage = 1;
-            renderPosts();
+      </div>
+    </div>
+    <div id="newPostForm"
+      style="display:none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 90%; max-width: 500px; background-color: rgba(0, 0, 0, 0.4); backdrop-filter: blur(6px); border-radius: 20px; color: white; padding: 2rem; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.37);">
+      <h4 class="text-center mb-4">Create New Post</h4>
+      <input type="text" id="newTitle" placeholder="Title" class="form-control mb-2"
+        style="background-color: rgba(255, 255, 255, 0.2); border-radius: 10px; color: white; height:60px" />
+      <input type="number" id="newRating" min="1" max="10" step="1" value="5" onkeydown="return false"
+        class="form-control mb-2"
+        style="background-color: rgba(255, 255, 255, 0.2); border-radius: 10px; color: white; height:40px" />
+      <textarea id="Content" placeholder="Content" class="form-control mb-2"
+        style="background-color: rgba(255, 255, 255, 0.2); border-radius: 10px; color: white; height:60px"></textarea>
+      <div style="display: flex; justify-content: space-between; align-items: center;">
+        <button id="cancelPost"
+          style="background-color: rgba(255, 255, 255, 0.2); color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 10px; box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3); font-size: 1rem; font-family: inherit; cursor: pointer;">
+          Cancel
+        </button>
+        <button id="submitPost"
+          style="background-color: rgba(255, 255, 255, 0.2); color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 10px; box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3); font-size: 1rem; font-family: inherit; cursor: pointer;">
+          Submit
+        </button>
+      </div>
+    </div>
+  </section>
+  <script>
+    const postsContainer = document.getElementById("postsContainer");
+    const sortSelect = document.getElementById("sortSelect");
+    const searchInput = document.getElementById("searchInput");
+    const prevBtn = document.getElementById("prevBtn");
+    const nextBtn = document.getElementById("nextBtn");
+    const pageInfo = document.getElementById("pageInfo");
+    const posts = Array.from(postsContainer.children);
+    const newPostBtn = document.getElementById("newPostBtn");
+    const newPostForm = document.getElementById("newPostForm");
+    const cancelBtn = document.getElementById("cancelPost");
+    const submitbtn = document.getElementById("submitPost");
+
+    document.getElementById("submitPost").addEventListener("click", async () => {
+      const title = document.getElementById("newTitle").value;
+      const rating = document.getElementById("newRating").value;
+      const content = document.getElementById("Content").value;
+
+      const post = {
+        PostTitle: title,
+        PostRating: parseInt(rating),
+        PostContent: content,
+        userID: 1
+      };
+
+      try {
+        const response = await fetch('/Home/CreateCommunityPost', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(post)
         });
-        searchInput.addEventListener("input", e => {
-            currentQuery = e.target.value.toLowerCase();
-            currentPage = 1;
-            renderPosts();
-        });
-        prevBtn.addEventListener("click", () => {
-            currentPage--;
-            renderPosts();
-        });
-        nextBtn.addEventListener("click", () => {
-            currentPage++;
-            renderPosts();
-        });
-        renderPosts();
-    </script>
+
+        const result = await response.json();
+        if (result.success) {
+          document.getElementById("newTitle").value = "";
+          document.getElementById("newRating").value = "5";
+          document.getElementById("Content").value = "";
+          document.getElementById("newPostForm").style.display = "none";
+
+          location.reload();
+        }
+      } catch (error) {
+        console.error('Error:', error);
+      }
+    });
+
+    newPostBtn.addEventListener("click", () => {
+      newPostForm.style.display = newPostForm.style.display === "none" ? "block" : "none";
+    });
+    cancelBtn.addEventListener("click", () => {
+      newPostForm.style.display = "none";
+      newPostForm.style.transform = "translate(-50%, -50%) scale(0.9)";
+    });
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") {
+        newPostForm.style.display = "none";
+        newPostForm.style.transform = "translate(-50%, -50%) scale(0.9)";
+      }
+    });
+
+    let currentPage = 1;
+    const pageSize = 5;
+    let currentSort = "good";
+    let currentQuery = "";
+    function renderPosts() {
+      let filtered = posts.filter(post =>
+        post.dataset.title.includes(currentQuery)
+      );
+      filtered.sort((a, b) => {
+        const A = parseFloat(a.dataset.rating);
+        const B = parseFloat(b.dataset.rating);
+        return currentSort === "good" ? B - A : A - B;
+      });
+      const totalPages = Math.max(1, Math.ceil(filtered.length / pageSize));
+      if (currentPage > totalPages) currentPage = totalPages;
+      if (currentPage < 1) currentPage = 1;
+      const start = (currentPage - 1) * pageSize;
+      const end = start + pageSize;
+      posts.forEach(p => p.style.display = "none");
+      filtered.slice(start, end).forEach(p => p.style.display = "block");
+      pageInfo.textContent = `Page ${currentPage} of ${totalPages}`;
+      prevBtn.disabled = currentPage === 1;
+      nextBtn.disabled = currentPage === totalPages;
+    }
+    sortSelect.addEventListener("change", e => {
+      currentSort = e.target.value;
+      currentPage = 1;
+      renderPosts();
+    });
+    searchInput.addEventListener("input", e => {
+      currentQuery = e.target.value.toLowerCase();
+      currentPage = 1;
+      renderPosts();
+    });
+    prevBtn.addEventListener("click", () => {
+      currentPage--;
+      renderPosts();
+    });
+    nextBtn.addEventListener("click", () => {
+      currentPage++;
+      renderPosts();
+    });
+    renderPosts();
+  </script>
 </body>
+
 </html>
