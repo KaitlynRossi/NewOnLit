@@ -8,8 +8,10 @@ namespace ASPProject.Models
         [Key]
         public int transID { get; set; }
         public int userID { get; set; }
-        public int bookID { get; set; }
+        public int transBookID { get; set; }
         public int qty { get; set; }
         public decimal saleAmount { get; set; }
+
+        public required Book TransBook { get; set; }
     }
 }

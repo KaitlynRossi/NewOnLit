@@ -6,18 +6,26 @@
 
 </head>
 <body>
-    <h3>Order History</h3>
-    <table>
-        <tbody>
-            @foreach(var listItem in Model){
+    <section style="height: 100vh; padding-top: 100px;">
+        <h3>Order History</h3>
+        <table>
+            <thead>
                 <tr>
-                    <td>@listItem.transID</td>
-                    <td>@listItem.bookID</td>
-                    <td>@listItem.qty</td>
-                    <td>@listItem.saleAmount</td>
+                    <th>Book IDs</th>
+                    <th>Quantity of Books</th>
+                    <th>Purchase Amount</th>
                 </tr>
-            }
-        </tbody>
-    </table>
-    <a class="btn btn-custom" asp-controller="Home" asp-action="MyView">Go to Bookstore</a>    
+            </thead>
+            <tbody>
+                @foreach(var listItem in Model){
+                    <tr>
+                        <td>@listItem.transBookID</td>
+                        <td>@listItem.qty</td>
+                        <td>@listItem.saleAmount</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <a class="btn btn-custom" asp-controller="Home" asp-action="MyView">Go to Bookstore</a>  
+    </section>  
 </body>

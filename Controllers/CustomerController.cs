@@ -32,19 +32,41 @@ namespace ASPProject.Controllers
             return View(customer);
         }
         [HttpGet]
-        public IActionResult Login() => View();
-
-        [HttpPost]
-        public IActionResult Login(string email, string password)
+        public IActionResult Login()
         {
-            var customer = _context.User.FirstOrDefault(c => c.Email == email && c.Password == password);
+            // Clear any existing session when accessing login page
+            HttpContext.Session.Clear();
+            return View();
+        }
+        [HttpPost]
+        public IActionResult Login(LoginViewModel loginModel)
+        {
+            if (!ModelState.IsValid)
+                return View(loginModel);
+
+            var customer = _context.User.FirstOrDefault(c => 
+                c.UserName == loginModel.UserName && 
+                c.Password == loginModel.Password);
+
             if (customer == null)
             {
-                ModelState.AddModelError(string.Empty, "Invalid login attempt.");
-                return View();
+                ModelState.AddModelError(string.Empty, "Invalid username or password");
+                return View(loginModel);
             }
 
+            // Store user information in session
+            HttpContext.Session.SetInt32("UserId", customer.UserID);
+            HttpContext.Session.SetString("UserName", customer.UserName);
+
             return RedirectToAction("Profile", new { id = customer.UserID });
+        }
+        [HttpGet]
+        public IActionResult Logout()
+        {
+            // Clear the session
+            HttpContext.Session.Clear();
+            // Redirect to login page
+            return RedirectToAction("Login");
         }
 
          public IActionResult OrderHistory()

@@ -99,36 +99,40 @@ public class ShoppingCartController : Controller
         return View(model);
     }
     public IActionResult OrderConfirmation()
+{
+    var cart = GetCartFromSession();
+    if (cart != null && cart.Any())
     {
-        var cart = GetCartFromSession();
-        if (cart != null && cart.Any())
+        foreach (var item in cart)
         {
-            foreach (var item in cart)
+            if (item.Book == null)
             {
-                if (item.Book == null)
-                {
 #pragma warning disable CS8601 // Possible null reference assignment.
                     item.Book = _context.Books.FirstOrDefault(b => b.Id == item.BookId);
 #pragma warning restore CS8601 // Possible null reference assignment.
                 }
-            }
-            // Calculate final amount
-            var total = cart.Sum(item => item.Book.Price * item.Quantity);
-            var transaction = new Transaction
-            {
-                userID = 1, //implement user tracking
-                bookID = cart.First().BookId, // For single book orders
-                qty = cart.Sum(item => item.Quantity),
-                saleAmount = total
-            };
-            // Save to database
-            _context.Transactions.Add(transaction);
-            _context.SaveChanges();
-            // Clear the cart
-            SaveCartToSession(new List<ShoppingCart>());
         }
-        return View();
+
+        // Calculate final amount
+        var total = cart.Sum(item => item.Book.Price * item.Quantity);
+        var transaction = new Transaction
+        {
+            userID = 1, // Implement user tracking
+            transBookID = cart.First().BookId, // For single book orders
+            qty = cart.Sum(item => item.Quantity),
+            saleAmount = total,
+            TransBook = cart.First().Book // Set the related Book entity to TransBook
+        };
+
+        // Save to database
+        _context.Transactions.Add(transaction);
+        _context.SaveChanges();
+
+        // Clear the cart
+        SaveCartToSession(new List<ShoppingCart>());
     }
+    return View();
+}
 
     private List<ShoppingCart> GetCartFromSession()
     {

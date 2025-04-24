@@ -70,7 +70,8 @@
             <p><strong>Email:</strong> @Model.Email</p>
             <p><strong>Username:</strong> @Model.UserName</p>
             <a class="btn btn-custom" asp-controller="Home" asp-action="MyView">Go to Bookstore</a>
-            <a class="btn btn-custom" asp-controller="Customer" asp-action="OrderHistory">Order History</a>
+            <!--<a class="btn btn-custom" asp-controller="Customer" asp-action="OrderHistory">Order History</a>-->
+            <a asp-controller="Customer" asp-action="Logout" class="btn btn-custom">Logout</a>
         </div>
         <script src="/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     </section>
