@@ -1,0 +1,23 @@
+@model List<ASPProject.Models.Transaction>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+</head>
+<body>
+    <h3>Order History</h3>
+    <table>
+        <tbody>
+            @foreach(var listItem in Model){
+                <tr>
+                    <td>@listItem.transID</td>
+                    <td>@listItem.bookID</td>
+                    <td>@listItem.qty</td>
+                    <td>@listItem.saleAmount</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <a class="btn btn-custom" asp-controller="Home" asp-action="MyView">Go to Bookstore</a>    
+</body>

@@ -47,5 +47,11 @@ namespace ASPProject.Controllers
             return RedirectToAction("Profile", new { id = customer.UserID });
         }
 
+         public IActionResult OrderHistory()
+        {
+            var transaction = _context.Transactions.ToList();
+            return View(transaction);
+        }
+
     }
 }
