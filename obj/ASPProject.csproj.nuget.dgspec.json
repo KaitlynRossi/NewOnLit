@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/kaitirossi/Documents/COP3855/NewOnLit/ASPProject.csproj": {}
+    "/Users/kaitirossi/Documents/NewOnLit/ASPProject.csproj": {}
   },
   "projects": {
-    "/Users/kaitirossi/Documents/COP3855/NewOnLit/ASPProject.csproj": {
+    "/Users/kaitirossi/Documents/NewOnLit/ASPProject.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/kaitirossi/Documents/COP3855/NewOnLit/ASPProject.csproj",
+        "projectUniqueName": "/Users/kaitirossi/Documents/NewOnLit/ASPProject.csproj",
         "projectName": "ASPProject",
-        "projectPath": "/Users/kaitirossi/Documents/COP3855/NewOnLit/ASPProject.csproj",
+        "projectPath": "/Users/kaitirossi/Documents/NewOnLit/ASPProject.csproj",
         "packagesPath": "/Users/kaitirossi/.nuget/packages/",
-        "outputPath": "/Users/kaitirossi/Documents/COP3855/NewOnLit/obj/",
+        "outputPath": "/Users/kaitirossi/Documents/NewOnLit/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/kaitirossi/.nuget/NuGet/NuGet.Config"

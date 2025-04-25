@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using ASPProject.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace ASPProject.Controllers
 {
@@ -71,7 +72,7 @@ namespace ASPProject.Controllers
 
          public IActionResult OrderHistory()
         {
-            var transaction = _context.Transactions.ToList();
+            var transaction = _context.Transactions.Include(t => t.TransBook).ToList();
             return View(transaction);
         }
 

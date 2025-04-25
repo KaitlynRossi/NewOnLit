@@ -3,15 +3,130 @@
 <html lang="en">
 
 <head>
+     <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap" rel="stylesheet" />
+     <style>
+        body{
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            background: url('../images/BackgroundForest.jpg') no-repeat center center fixed;
+            background-size: cover;
+            font-family: 'MedievalSharp', cursive;
+        }
 
+        .fantasy-heading {
+            font-family: 'Rouge Script', cursive;
+            font-size: 3rem;
+            color: #1e2a38;
+            font-size: 60px;
+            text-align: center;
+            text-shadow:
+                0 0 8px #f8e7c9,
+                0 0 16px #fceabb,
+                0 0 24px #f9d29d;
+            padding: 0.5rem 1.5rem;
+            border-radius: 1rem;
+            display: inline-block;
+            margin: 2rem auto;
+            position: relative;
+            animation: glowPulse 3s ease-in-out infinite;
+        }
+
+        @@keyframes glowPulse {
+            0%, 100% {
+                text-shadow:
+                    0 0 8px #f8e7c9,
+                    0 0 16px #fceabb,
+                    0 0 24px #f9d29d;
+            }
+            50% {
+                text-shadow:
+                    0 0 12px #fff1cc,
+                    0 0 24px #ffe7a1,
+                    0 0 36px #ffd580;
+            }
+        }
+
+
+        .fantasy-heading::before, 
+        .fantasy-heading::after {
+            content: '✨';
+            position: absolute;
+            font-size: 1.2rem;
+            animation: sparkle 2.5s infinite ease-in-out;
+            opacity: 0.7;
+        }
+
+        .fantasy-heading::before {
+            top: -10px;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .fantasy-heading::after {
+            bottom: -10px;
+            right: 15%;
+            animation-delay: 1.25s;
+        }
+
+        @@keyframes sparkle {
+            0%   { transform: translateY(0) scale(1); opacity: 0.7; }
+            50%  { transform: translateY(-10px) scale(1.3); opacity: 1; }
+            100% { transform: translateY(0) scale(1); opacity: 0.7; }
+        }
+
+        table, th, td {
+            text-align: center;
+            vertical-align: middle;
+             padding: 0.5rem 1.5rem;
+        }
+
+        table{
+            backdrop-filter: blur(6px);
+            background-color: rgba(0, 0, 0, 0.4);
+            border-radius: 20px;
+            color: white;
+            width: 55%;
+            max-width: 500px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.37);
+            margin: auto;
+            margin-bottom: 5%;
+            margin-top: 2%;
+        }
+
+        .custom-btn {
+            background-color: #e4e5e6;
+            padding: 10px 15px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-family: 'Klee One';
+            color: black;
+            transition: all 0.3s ease;
+            display: inline-block;
+            white-space: nowrap;
+        }
+
+        .custom-btn:hover {
+            background-color: #ffffff;
+            color: black;
+            transform: scale(1.05);
+            box-shadow: 0 3px 10px rgba(91, 96, 99, 0.594);
+        }
+    </style>
 </head>
 <body>
     <section style="height: 100vh; padding-top: 100px;">
-        <h3>Order History</h3>
+             <div class="d-flex justify-content-center">
+        <h3 class="fantasy-heading">Order History</h3>
+        </div>
+           <div class="d-flex justify-content-center">
         <table>
             <thead>
                 <tr>
-                    <th>Book IDs</th>
+                    <th>Book Title</th>
                     <th>Quantity of Books</th>
                     <th>Purchase Amount</th>
                 </tr>
@@ -19,13 +134,16 @@
             <tbody>
                 @foreach(var listItem in Model){
                     <tr>
-                        <td>@listItem.transBookID</td>
+                        <td>@listItem.TransBook.Title</td>
                         <td>@listItem.qty</td>
                         <td>@listItem.saleAmount</td>
                     </tr>
                 }
             </tbody>
         </table>
-        <a class="btn btn-custom" asp-controller="Home" asp-action="MyView">Go to Bookstore</a>  
+        </div>
+         <div class="d-flex justify-content-center">
+        <a class="btn custom-btn" asp-controller="Home" asp-action="MyView">Go to Bookstore</a>  
+        </div>
     </section>  
 </body>
